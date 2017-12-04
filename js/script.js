@@ -46,12 +46,67 @@ document.getElementById("max").innerHTML = maxValue(numbers);
 //product
 var num2 = [1, 3, 7, 10, 2];
 function multiply (numArray) {
-	var product = 0;
+	var product = 1;
 	for (var i = 0; i < numArray.length; i++) {
 		product *= numArray[i];
+		//console.log(product);
 	}
 	return product;
 }
+
+document.getElementById("prod").innerHTML = multiply(num2);
+
+var sentence = "i am a sentence.";
+
+function convertFirstLetter (string) {
+	var words = string.split(" ");
+	var output = "";
+	//console.log(words);
+	for (var i = 0; i < words.length; i++) {
+		words[i] = words[i].replace(words[i].charAt(0), words[i].charAt(0).toUpperCase());
+		//console.log(words[i]);
+		output += words[i] + " ";
+	}
+	return output;
+}
+
+document.getElementById("letters").innerHTML = convertFirstLetter(sentence);
+
+//grades
+var points = [76, 85, 65, 93, 81];
+function calcAverage (numArray) {
+	var sum = 0;
+	for (var i = 0; i < points.length; i++) {
+		sum += points[i];
+	}
+	return (sum / points.length);
+}
+var avg = calcAverage(points);
+console.log(avg);
+
+switch (true) {
+	case (avg < 60):
+		document.getElementById("grades").innerHTML = "F";
+		break;
+	case (avg < 70):
+		document.getElementById("grades").innerHTML = "D";
+		break;
+	case (avg < 80):
+		document.getElementById("grades").innerHTML = "C";
+		break;
+	case (avg < 90):
+		document.getElementById("grades").innerHTML = "B";
+		break;
+	case (avg < 100):
+		document.getElementById("grades").innerHTML = "A";
+		break;
+	default:
+		console.log("default");
+}
+
+
+
+
 
 
 

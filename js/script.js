@@ -82,7 +82,7 @@ function calcAverage (numArray) {
 	return (sum / points.length);
 }
 var avg = calcAverage(points);
-console.log(avg);
+//console.log(avg);
 
 switch (true) {
 	case (avg < 60):
@@ -103,6 +103,27 @@ switch (true) {
 	default:
 		console.log("default");
 }
+
+//array add
+var items = [];
+var input = "";
+document.getElementsByName('add')[0].addEventListener("click", function () {
+	input = document.getElementsByName('arr-input')[0].value;
+	items.push(input);
+	alert(input + " added at index " + (items.length - 1));
+});
+
+document.getElementsByName('display')[0].addEventListener("click", function () {
+	var list = "";
+	for (var i = 0; i < items.length; i++) {
+		list +="Element " + i + " = " + items[i] + "<br>";
+	}
+	document.getElementById("list").innerHTML = list;
+});
+
+
+
+
 
 
 

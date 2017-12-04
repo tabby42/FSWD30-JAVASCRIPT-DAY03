@@ -5,8 +5,60 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Cart</title>
 	<link rel="stylesheet" href="">
+	<style type="text/css">
+		#products {
+			float: left;
+		}
+		#cart {
+			float: right;
+		}
+		#products > div {
+			float: left;
+		}
+		#cart-content {
+			display: none;
+		}
+		#cart-content.show {
+			display: block;
+		}
+	</style>
 </head>
 <body>
-	
+	<div id="products">
+		<div id="product-1">
+			<img src="img/Download.png" alt="Thumbnail" width="100">
+			<p class="p-name">Product One</p>
+			<p class="price">€ 82.70</p>
+			<button type="button" class="add">Add to Cart</button>
+		</div>
+		<div id="product-2">
+			<img src="img/Download.png" alt="Thumbnail" width="100">
+			<p class="p-name">Product Two</p>
+			<p class="price">€ 30.90</p>
+			<button type="button" class="add">Add to Cart</button>
+		</div>
+		<div id="product-3">
+			<img src="img/Download.png" alt="Thumbnail" width="100">
+			<p class="p-name">Product Three</p>
+			<p class="price">€ 99.90</p>
+			<button type="button" class="add">Add to Cart</button>
+		</div>
+		<div id="product-4">
+			<img src="img/Download.png" alt="Thumbnail" width="100">
+			<p class="p-name">Product Four</p>
+			<p class="price">€ 99.90</p>
+			<button type="button" class="add">Add to Cart</button>
+		</div>
+	</div>
+	<div id="cart">
+		<button type="button" id="viewCart">View Cart</button>
+		<div id ="cart-content">
+			<ul>
+			</ul>
+		</div>
+	</div>
+
+
+	<script src="cart.js" type="text/javascript" charset="utf-8" ></script>
 </body>
 </html>

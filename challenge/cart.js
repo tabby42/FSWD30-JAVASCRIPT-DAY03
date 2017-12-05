@@ -14,7 +14,7 @@ function updateCartTop () {
 	var list = "";
 	for (var i = 0; i < cart.length; i++) {
 		list += "<li><span id='plus'>+</span>&emsp;<span id='minus'>-</span>&emsp;" 
-		+ cart[i][0] + " --- " + cart[i][1] +  " --- € " + (cart[i][2] * cart[i][0]).toFixed(2)
+		+ cart[i][0] + "x --- " + cart[i][1] +  " --- € " + (cart[i][2] * cart[i][0]).toFixed(2)
 		+ "&emsp;<span id='delete'>x</span><span id='parentId'>" 
 		+ cart[i][3] + "</span></li>";
 	}

@@ -1,22 +1,24 @@
 var cart = [];
 
 function viewCart () {
-	var list = "";
-	for (var i = 0; i < cart.length; i++) {
-		list += "<li><span id='plus'>+</span>&emsp;<span id='minus'>-</span>&emsp;" 
-		+ cart[i][0] + " --- " + cart[i][1] +  " --- € " + cart[i][2] 
-		+ "&emsp;<span id='delete'>x</span><span id='parentId'>" 
-		+ cart[i][3] + "</span></li>";
-	}
 	document.getElementById("cart-content").classList.add("show");
-	document.querySelector("#cart-content ul").innerHTML = list;
+	updateCartTop();
 	updateCartBottom();
 }
 
-document.getElementById('viewCart').addEventListener("click", viewCart);
+function updateCartTop () {
+	var list = "";
+	for (var i = 0; i < cart.length; i++) {
+		list += "<li><span id='plus'>+</span>&emsp;<span id='minus'>-</span>&emsp;" 
+		+ cart[i][0] + " --- " + cart[i][1] +  " --- € " + cart[i][2].toFixed(2)
+		+ "&emsp;<span id='delete'>x</span><span id='parentId'>" 
+		+ cart[i][3] + "</span></li>";
+	}
+	document.querySelector("#cart-content ul").innerHTML = list;
+}
 
+//event handling for "Add to cart" Buttons
 var addButtons = document.getElementsByClassName("add");
-//console.log(addButtons);
 for (var i = 0; i < addButtons.length; i++) {
 	addButtons[i].addEventListener("click", function () {
 		var parentId = this.parentElement.getAttribute('id');
@@ -36,6 +38,8 @@ for (var i = 0; i < addButtons.length; i++) {
 		if (!found) {
 			cart.push([1, name, price, parentId]);
 		}
+		updateCartTop();
+		updateCartBottom();
 	});
 }
 
@@ -51,6 +55,9 @@ function updateCartBottom () {
 	document.getElementById("subtotal").innerHTML = "<b>Subtotal:<b> € " + cartSubTotal();
 }
 
+//add event listener for "View Cart" Button
+document.getElementById('viewCart').addEventListener("click", viewCart);
+//event listeners for buttons, that don't exist in the initial html
 document.addEventListener("click", deleteItem);
 document.addEventListener("click", incrementCount);
 
@@ -68,15 +75,20 @@ function deleteItem ( event ) {
 		//remove item from the DOM
 		element.parentElement.remove();
 		updateCartBottom();
-		//console.log(cart);
 	}
 }
 
-function incrementCount (event) {
+function incrementCount ( event ) {
 	var element = event.target;
 	if (element.getAttribute("id") == "plus") {
 		var parentId = element.parentElement.querySelector("#parentId").innerHTML;
-
+		for (var i = 0; i < cart.length; i++) {
+			if (cart[i][3] === parentId) {
+				cart[i][0]++;
+			}
+		}
+		updateCartTop();
+		updateCartBottom();
 	}
 }
 

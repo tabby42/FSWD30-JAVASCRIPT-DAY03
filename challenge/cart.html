@@ -38,6 +38,7 @@
 		}
 		#cart-content ul {
 			list-style-type: none;
+			clear: both;
 		}
 		#cart-content ul li {
 			border-bottom:  1px solid #000;
@@ -45,13 +46,17 @@
 		}
 		#plus,
 		#minus,
-		#delete {
+		#delete,
+		#close {
 			border: 1px solid #000;
 			padding:  5px;
 		    display: inline-block;
 		    cursor:  pointer;
 	        width: 18px;
-    		text-align: center;
+    		text-align: center !important;
+		}
+		#close {
+		    float: right;
 		}
 		#viewCart {
 			float: right;
@@ -91,6 +96,7 @@
 	<div id="cart">
 		<button type="button" id="viewCart">View Cart<span id="count">(0)</span></button>
 		<div id ="cart-content">
+			<p id="close">X</p>
 			<ul>
 			</ul>
 			<p id="subtotal"></p>

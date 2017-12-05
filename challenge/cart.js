@@ -6,6 +6,10 @@ function viewCart () {
 	updateCartBottom();
 }
 
+function hideCart () {
+	document.getElementById("cart-content").classList.remove("show");
+}
+
 function updateCartTop () {
 	var list = "";
 	for (var i = 0; i < cart.length; i++) {
@@ -17,6 +21,19 @@ function updateCartTop () {
 	document.querySelector("#cart-content ul").innerHTML = list;
 }
 
+function updateCartBottom () {
+	document.getElementById("subtotal").innerHTML = 
+	"<b>Subtotal:&emsp;<b> € " + cartSubTotal();
+	document.getElementById("shipping").innerHTML = 
+	"<b>Shipping:&emsp;<b> € " + shippingInfo();
+	document.getElementById("tax").innerHTML = 
+	"<b>Tax 22%:&emsp;<b> € " + calcTax();
+	document.getElementById("discount").innerHTML = 
+	"<b>Discount:&emsp;<b> € " + calcDiscount();
+	document.getElementById("total").innerHTML = 
+	"<b>Total:&emsp;<b> € " + cartTotal();
+}
+
 function updateCount () {
 	var count = 0;
 	for (var i = 0; i < cart.length; i++) {
@@ -25,6 +42,13 @@ function updateCount () {
 	document.getElementById("count").innerHTML = "(" + count + ")";
 }
 
+//add event listeners for "View Cart" Button and "Close" Button
+document.getElementById('viewCart').addEventListener("click", viewCart);
+document.getElementById('close').addEventListener("click", hideCart);
+//event listeners for buttons, that don't exist in the initial html
+document.addEventListener("click", deleteItem);
+document.addEventListener("click", incrementCount);
+document.addEventListener("click", decrementCount);
 //event handling for "Add to cart" Buttons
 var addButtons = document.getElementsByClassName("add");
 for (var i = 0; i < addButtons.length; i++) {
@@ -60,17 +84,34 @@ function cartSubTotal () {
 	return subtotal.toFixed(2);
 }
 
-function updateCartBottom () {
-	document.getElementById("subtotal").innerHTML = "<b>Subtotal:<b> € " + cartSubTotal();
+function shippingInfo () {
+	if (cartSubTotal() > 80) {
+		return 6;
+	} else {
+		return 9;
+	}
 }
 
-//add event listener for "View Cart" Button
-document.getElementById('viewCart').addEventListener("click", viewCart);
-//event listeners for buttons, that don't exist in the initial html
-document.addEventListener("click", deleteItem);
-document.addEventListener("click", incrementCount);
-document.addEventListener("click", decrementCount);
+function calcTax() {
+	var total = cartSubTotal() + shippingInfo();
+	return (total * 0.22).toFixed(2);
+}
 
+function calcDiscount() {
+	//< 40 Euros = 0%, < 100 = 7%, < 200 = 12%
+	var total = cartSubTotal() + shippingInfo();
+	if (total < 40) {
+		return 0;
+	} else if (total < 100) {
+		return (total * 0.07).toFixed(2);
+	} else {
+		return (total * 0.12).toFixed(2);
+	}
+}
+
+function cartTotal () {
+	return ((cartSubTotal() + shippingInfo()) - calcDiscount()).toFixed(2);
+}
 
 function deleteItem ( event ) {
 	var element = event.target;

@@ -1,19 +1,19 @@
-// for (var i = 1; i <= 100; i++) {
-// 	if (i % 3 === 0 && i % 5 === 0) {
-// 		document.getElementById("fizzbuzz").innerHTML +=
-// 		"fizzbuzz<br>";
-// 	} else if ( i % 5 === 0) {
-// 		document.getElementById("fizzbuzz").innerHTML +=
-// 		"buzz<br>";
-// 	} else if (i % 3 === 0 ) {
-// 		document.getElementById("fizzbuzz").innerHTML +=
-// 		"fizz<br>";
-// 	}
-// 	else {
-// 		document.getElementById("fizzbuzz").innerHTML +=
-// 		i + "<br>";
-// 	}
-// }
+for (var i = 1; i <= 100; i++) {
+	if (i % 3 === 0 && i % 5 === 0) {
+		document.getElementById("fizzbuzz").innerHTML +=
+		"fizzbuzz<br>";
+	} else if ( i % 5 === 0) {
+		document.getElementById("fizzbuzz").innerHTML +=
+		"buzz<br>";
+	} else if (i % 3 === 0 ) {
+		document.getElementById("fizzbuzz").innerHTML +=
+		"fizz<br>";
+	}
+	else {
+		document.getElementById("fizzbuzz").innerHTML +=
+		i + "<br>";
+	}
+}
 
 //The program should generate every time different 
 //random number, that should be between -5 and 25. 

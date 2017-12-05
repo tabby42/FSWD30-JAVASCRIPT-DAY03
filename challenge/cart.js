@@ -17,6 +17,14 @@ function updateCartTop () {
 	document.querySelector("#cart-content ul").innerHTML = list;
 }
 
+function updateCount () {
+	var count = 0;
+	for (var i = 0; i < cart.length; i++) {
+		count += cart[i][0];
+	}
+	document.getElementById("count").innerHTML = "(" + count + ")";
+}
+
 //event handling for "Add to cart" Buttons
 var addButtons = document.getElementsByClassName("add");
 for (var i = 0; i < addButtons.length; i++) {
@@ -38,6 +46,7 @@ for (var i = 0; i < addButtons.length; i++) {
 		if (!found) {
 			cart.push([1, name, price, parentId]);
 		}
+		updateCount();
 		updateCartTop();
 		updateCartBottom();
 	});
@@ -74,6 +83,7 @@ function deleteItem ( event ) {
 		}
 		//remove item from the DOM
 		element.parentElement.remove();
+		updateCount();
 		updateCartBottom();
 	}
 }
@@ -87,6 +97,7 @@ function incrementCount ( event ) {
 				cart[i][0]++;
 			}
 		}
+		updateCount();
 		updateCartTop();
 		updateCartBottom();
 	}

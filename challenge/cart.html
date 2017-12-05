@@ -11,12 +11,17 @@
 		}
 		#products {
 			float: left;
+		    padding: 30px;
+    		background: #eee;
 		}
 		#cart {
 			float: right;
 		}
 		#products > div {
 			float: left;
+		    margin: 5px;
+    		padding: 5px;
+    		background: #fff;
 		}
 		#cart-content {
 			display: none;
@@ -50,6 +55,9 @@
 		#viewCart {
 			float: right;
 		}
+		#parentId {
+			display: none;
+		}
 	</style>
 </head>
 <body>
@@ -80,7 +88,7 @@
 		</div>
 	</div>
 	<div id="cart">
-		<button type="button" id="viewCart">View Cart<span id="count"></span></button>
+		<button type="button" id="viewCart">View Cart<span id="count">(0)</span></button>
 		<div id ="cart-content">
 			<ul>
 			</ul>

@@ -69,6 +69,7 @@ document.getElementById('viewCart').addEventListener("click", viewCart);
 //event listeners for buttons, that don't exist in the initial html
 document.addEventListener("click", deleteItem);
 document.addEventListener("click", incrementCount);
+document.addEventListener("click", decrementCount);
 
 
 function deleteItem ( event ) {
@@ -103,4 +104,23 @@ function incrementCount ( event ) {
 	}
 }
 
+function decrementCount ( event ) {
+	var element = event.target;
+	if (element.getAttribute("id") == "minus") {
+		var parentId = element.parentElement.querySelector("#parentId").innerHTML;
+		for (var i = 0; i < cart.length; i++) {
+			if (cart[i][3] === parentId) {
+				if (cart[i][0] - 1 >= 0) {
+					cart[i][0]--;
+				}
+				// else {
+				// 	deleteItem();
+				// }
+			}
+		}
+		updateCount();
+		updateCartTop();
+		updateCartBottom();
+	}
+}
 

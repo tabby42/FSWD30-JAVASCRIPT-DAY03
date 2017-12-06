@@ -1,14 +1,14 @@
 var cart = [];
 
-function viewCart () {
-	document.getElementById("cart-content").classList.add("show");
-	updateCartTop();
-	updateCartBottom();
-}
+// function viewCart () {
+// 	document.getElementById("cart-content").classList.add("show");
+// 	updateCartTop();
+// 	updateCartBottom();
+// }
 
-function hideCart () {
-	document.getElementById("cart-content").classList.remove("show");
-}
+// function hideCart () {
+// 	document.getElementById("cart-content").classList.remove("show");
+// }
 
 function updateCartTop () {
 	var list = "";
@@ -43,9 +43,9 @@ function updateCount () {
 }
 
 //add event listeners for "View Cart" Button and "Close" Button
-document.getElementById('viewCart').addEventListener("click", viewCart);
-document.getElementById('close').addEventListener("click", hideCart);
-//event listeners for buttons, that don't exist in the initial html
+//document.getElementById('viewCart').addEventListener("click", viewCart);
+//document.getElementById('close').addEventListener("click", hideCart);
+//event listeners for buttons that don't exist in the initial html
 document.addEventListener("click", deleteItem);
 document.addEventListener("click", incrementCount);
 document.addEventListener("click", decrementCount);
@@ -154,9 +154,6 @@ function decrementCount ( event ) {
 				if (cart[i][0] - 1 >= 0) {
 					cart[i][0]--;
 				}
-				// else {
-				// 	deleteItem();
-				// }
 			}
 		}
 		updateCount();

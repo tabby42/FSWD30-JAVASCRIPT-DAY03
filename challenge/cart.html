@@ -25,14 +25,14 @@
     		background: #fff;
 		}
 		#cart-content {
-			display: none;
+			/*display: none;*/
 			clear: both;
 		    padding: 20px;
     		background: #eee;
 		}
-		#cart-content.show {
+		/*#cart-content.show {
 			display: block;
-		}
+		}*/
 		#cart-content p {
 			text-align: right;
 		}
@@ -57,6 +57,7 @@
 		}
 		#close {
 		    float: right;
+	        background: #fff;
 		}
 		#viewCart {
 			float: right;
@@ -96,7 +97,7 @@
 	<div id="cart">
 		<button type="button" id="viewCart">View Cart<span id="count">(0)</span></button>
 		<div id ="cart-content">
-			<p id="close">X</p>
+			<!-- <p id="close">X</p> -->
 			<ul>
 			</ul>
 			<p id="subtotal"></p>
@@ -106,8 +107,6 @@
 			<p id="total"></p>
 		</div>
 	</div>
-
-
 	<script src="cart.js" type="text/javascript" charset="utf-8" ></script>
 </body>
 </html>
